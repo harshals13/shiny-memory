@@ -29,7 +29,7 @@ function insertPackage(req, res) {
         } else {
             console.log("Error inserting package");
         }
-    })
+    });
 }
 
 module.exports = router;

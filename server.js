@@ -15,29 +15,27 @@ require('./models/db')
 require("./models/package.model");
 require("./models/user.model");
 require("./models/trip.model");
+require("./models/driver.model");
 
 // Using Bodyparser
 app.use(bodyParser.json());
 
-const userController = require('./controllers/userController')
+const userController = require('./controllers/userController');
 
-const packageController = require('./controllers/packageController')
+const packageController = require('./controllers/packageController');
 
-  // // API to check if server is active
-  // app.get('/ping', function(req, res) {
-  //     res.send("Hello, there!");
-  //     console.log("Hello, there!");
-  // });
+const tripController = require('./controllers/tripController');
 
-  // // To authenticate with token
-  // app.use('/api/v1', require('./middleware/authService'));
+const driverController = require('./controllers/driverController');
 
-  // Controller for bank related API
+// API routes
   app.use('/api/v1/user', userController, (router));
 
-  app.use('/api/v1/package', packageController, (router))
+  app.use('/api/v1/package', packageController, (router));
 
-  // // Controller to get authentication token
-  // app.use('/', require('./controllers/user'));
+  app.use('/api/v1/trip', tripController, (router));
+
+  app.use('/api/v1/driver', driverController, (router))
+
 
   module.exports = app;
