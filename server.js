@@ -16,6 +16,7 @@ require("./models/package.model");
 require("./models/user.model");
 require("./models/trip.model");
 require("./models/driver.model");
+require("./models/booking.model");
 
 // Using Bodyparser
 app.use(bodyParser.json());
@@ -28,6 +29,8 @@ const tripController = require('./controllers/tripController');
 
 const driverController = require('./controllers/driverController');
 
+const bookingController = require('./controllers/bookingController');
+
 // API routes
   app.use('/api/v1/user', userController, (router));
 
@@ -35,7 +38,9 @@ const driverController = require('./controllers/driverController');
 
   app.use('/api/v1/trip', tripController, (router));
 
-  app.use('/api/v1/driver', driverController, (router))
+  app.use('/api/v1/driver', driverController, (router));
+
+  app.use('/api/v1/booking', bookingController, (router));
 
 
   module.exports = app;
