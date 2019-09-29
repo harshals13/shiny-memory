@@ -7,9 +7,23 @@ router.get('/', (req, res) => {
     res.json('Hello');
 });
 
+router.post('/login', (req, res) => {
+    login(req, res);
+});
+
 router.post('/', (req, res) => {
     addUser(req, res);
 });
+
+function login(req, res) {
+    User.findOne({email: req.body.email, password: req.body.password}, (err, doc) => {
+        if(!err) {
+            res.send(doc)
+        } else {
+            console.log("Unauthorized");
+        }
+    })
+}
 
 function addUser(req, res) {
     let user = new User();
