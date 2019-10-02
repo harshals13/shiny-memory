@@ -4,7 +4,7 @@ const Trip = mongoose.model('Trip');
 var router = express.Router();
 
 router.get('/', (req, res) => {
-    Trip.findOne({"user.email": req.query.email}, function(err, docs) {
+    Trip.findOne({"user.email": req.query.email, isCompleted: false}, function(err, docs) {
         if(!err) {
             res.send(docs);
         } else {
@@ -33,7 +33,7 @@ function updateDriver(req, res) {
 
 function addNewTrip(req, res) {
     let trip = new Trip();
-    Trip.findOne({"user.email": req.query.email}, function(err, docs) {
+    Trip.findOne({"user.email": req.query.email, isCompleted: false}, function(err, docs) {
         if(!err) {
             trip = docs;
         } else {
@@ -42,6 +42,9 @@ function addNewTrip(req, res) {
             })
         }
     });
+    if(trip.isCompleted === true) {
+        trip = new Trip();
+    }
     trip.package = req.body.package;
     trip.user = req.body.user;
     trip.tripDate = req.body.tripDate;
