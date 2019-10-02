@@ -10,7 +10,7 @@ Production
 ```bash
 PORT=8080 node app.js
 ```
-Development (Default port 8080)
+Development (Default port 3000)
 ```bash
 node app.js
 ```
