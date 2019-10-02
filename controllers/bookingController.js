@@ -13,11 +13,11 @@ router.post('/', (req, res) => {
 
 function newBooking(req, res) {
     let booking = new Booking();
-    user.fullName = req.body.fullName;
-    user.email = req.body.email;
-    user.mobile = req.body.mobile;
-    user.city = req.body.city;
-    user.save((err, doc) => {
+    booking.fullName = req.body.fullName;
+    booking.email = req.body.email;
+    booking.mobile = req.body.mobile;
+    booking.city = req.body.city;
+    booking.save((err, doc) => {
         if(!err) {
             res.send(doc);
         } else {

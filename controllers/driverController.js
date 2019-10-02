@@ -4,7 +4,15 @@ const mongoose = require('mongoose');
 const Driver = mongoose.model('Driver');
 
 router.get('/', (req, res) => {
-    res.json('Hello');
+    Driver.find((err, docs) => {
+        if (!err) {
+            res.send(docs);
+        } else {
+            res.json({
+                error: "Could not find drivers"
+            })
+        }
+    })
 });
 
 router.post('/', (req, res) => {
@@ -18,6 +26,7 @@ function addDriver(req, res) {
     driver.mobile = req.body.mobile;
     driver.language = req.body.language;
     driver.rate = req.body.rate;
+    driver.car = req.body.car;
     driver.save((err, doc) => {
         if(!err) {
             res.send(doc);
