@@ -10,7 +10,7 @@ var driverSchema = new mongoose.Schema({
     email: {
         type: String
     },
-    number: {
+    mobile: {
         type: String
     },
     language: {
