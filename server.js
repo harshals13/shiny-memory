@@ -10,7 +10,7 @@ var router = express.Router();
 
 const path = require('path');
 
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 // Connecting to database
 require('./models/db')
